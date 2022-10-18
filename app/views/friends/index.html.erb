@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+  <h1>Friends</h1>
+  <div id="friends">
+    <% @friends.each do |friend| %>
+      <% if friend.user == current_user%>
+        <div class="container bg-light mt-4 p-4 rounded">
+          <%= render friend %>
+          <p>
+            <%= link_to "Show this friend", friend, class:"btn btn-secondary" %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <br>
+  <%= link_to "New friend", new_friend_path, class:"btn btn-primary" %>
+<% else %>
+  <h1>User Not Recognised</h1>
+  <p>Please Log-In or Sign Up!</p>
+<%end%>
